@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend  # Serviceの名前をbackendに設定
+spec:
+  selector:
+    app: backend  # DeploymentのPodを指定するselector
+  ports:
+    - protocol: TCP
+      port: 8000  # Serviceのポート
+      targetPort: 8000  # Podのポート

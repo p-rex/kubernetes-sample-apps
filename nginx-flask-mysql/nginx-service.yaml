@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: proxy  # Serviceの名前をproxyに指定
+spec:
+  type: NodePort  # NodePortタイプで作成
+  selector:
+    app: nginx  # DeploymentのPodを接続するselector
+  ports:
+    - protocol: TCP
+      port: 80  # Serviceのポート
+      targetPort: 80  # Podのポート
+      nodePort: 30080  # 外部からアクセスするためのNodePort（範囲: 30000-32767）

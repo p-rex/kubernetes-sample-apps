@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1  # Replicaの数を1に指定
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.13-alpine  # 指定されたイメージを使用
+        ports:
+        - containerPort: 80  # TCP port 80でリッスン
+        volumeMounts:
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/conf.d/default.conf  # マウントパス
+          subPath: default.conf  # subPathを使用して単一ファイルとしてマウント
+      volumes:
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config  # ConfigMapを指定

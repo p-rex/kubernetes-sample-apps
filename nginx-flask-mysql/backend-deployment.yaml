@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1  # Replicaの数を1に指定
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: prex55/tutrial-nginx-flask-mysql-backend:1.0  # ここは実際のイメージ名に置き換えてください
+        ports:
+        - containerPort: 8000  # TCP port 8000でリッスン
+        volumeMounts:
+        - name: db-password-volume
+          mountPath: /run/secrets/db-password  # パスにマウント
+          subPath: mariadb-root-password  # Secretのキーを単一ファイルとしてマウント
+      volumes:
+      - name: db-password-volume
+        secret:
+          secretName: mariadb-secret
