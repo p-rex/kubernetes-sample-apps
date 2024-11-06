@@ -1,5 +1,5 @@
 # Nginx - Flask - MySQL
-Based on the following url.  
+Based on the steps in the following url.  
 https://avinton.com/academy/deploying-a-sample-application-on-kubernetes/
 
 
@@ -33,7 +33,8 @@ root@ub22-mk8s-helm:~/k8s_nginx-flask-mysql#
 
 
 ## Backend
-You can **skip** build steps because there is a builded image in docker hub.  
+*You can **skip** build steps since there is a builded image in docker hub.*  
+
 Build docker image in no SSL-Proxy environment. 
 ```bash:build
 git clone https://github.com/p-rex/sandbag-awesome-compose.git
@@ -82,7 +83,6 @@ service/backend      ClusterIP   10.152.183.207   <none>        8000/TCP       8
 service/proxy        NodePort    10.152.183.220   <none>        80:30080/TCP   57s
 
 NAME                                                   TYPE                             DATA   AGE
-secret/falcon-helm-falcon-sensor-pull-secret-cleanup   kubernetes.io/dockerconfigjson   1      23d
 secret/mariadb-secret                                  Opaque                           1      88m
 
 NAME                         DATA   AGE
