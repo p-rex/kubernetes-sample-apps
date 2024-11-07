@@ -8,10 +8,6 @@ https://avinton.com/academy/deploying-a-sample-application-on-kubernetes/
 ## DB
 ```:bash
 k apply -f mariadb-secret.yaml
-```
-
-
-```:bash
 k apply -f mariadb-sts.yaml
 ```
 
@@ -45,9 +41,6 @@ docker push prex55/tutrial-nginx-flask-mysql-backend:1.0
 
 ```
 k apply -f backend-deployment.yaml
-```
-
-```
 k apply -f backend-service.yaml
 ```
 
