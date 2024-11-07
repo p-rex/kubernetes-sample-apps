@@ -1,11 +1,16 @@
 # Nginx - Flask - MySQL
-Based on the steps in the following url.  
+This application is based on the following doc.
 https://avinton.com/academy/deploying-a-sample-application-on-kubernetes/
+
+And the above doc uses awsome-compose. Here is forked repository. I have fixed a small problem contained in the original repository.
+https://github.com/p-rex/sandbag-awesome-compose
 
 
 
 # Steps
 ## DB
+
+### create resources
 ```:bash
 k apply -f mariadb-secret.yaml
 k apply -f mariadb-sts.yaml
@@ -31,6 +36,7 @@ root@ub22-mk8s-helm:~/k8s_nginx-flask-mysql#
 ## Backend
 *You can **skip** build steps since there is a builded image in docker hub.*  
 
+### build
 Build docker image in no SSL-Proxy environment. 
 ```bash:build
 git clone https://github.com/p-rex/sandbag-awesome-compose.git
@@ -39,6 +45,7 @@ docker build -t prex55/tutrial-nginx-flask-mysql-backend:1.0 .
 docker push prex55/tutrial-nginx-flask-mysql-backend:1.0
 ```
 
+### create resources
 ```
 k apply -f backend-deployment.yaml
 k apply -f backend-service.yaml
