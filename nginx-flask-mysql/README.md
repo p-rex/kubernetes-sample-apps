@@ -1,5 +1,5 @@
 # Nginx - Flask - MySQL
-This application is based on the following doc.
+This application is based on the following doc.  
 https://avinton.com/academy/deploying-a-sample-application-on-kubernetes/
 
 And the above doc uses awsome-compose. Here is forked repository. I have fixed a small problem contained in the original repository.
